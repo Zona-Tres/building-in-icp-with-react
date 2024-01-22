@@ -1,0 +1,11 @@
+{
+  "canisters": {
+    "frontend": {
+      "type": "assets",
+      "frontend": {
+        "entrypoint": "dist/index.html"
+      },
+      "source": ["dist"]
+    }
+  }
+}
