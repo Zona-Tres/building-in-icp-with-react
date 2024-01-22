@@ -1,0 +1,4 @@
+service: () -> {
+    create: (text, text) -> (bool);
+    getAll: () -> (vec record {id:principal; bio:text; username:text}) query;
+}
