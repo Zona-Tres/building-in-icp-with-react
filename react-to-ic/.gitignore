@@ -1,0 +1,12 @@
+# NPM
+node_modules
+
+# Turbo
+.turbo
+
+# Internet Computer
+.dfx
+src/declarations
+
+# Azle
+.azle
