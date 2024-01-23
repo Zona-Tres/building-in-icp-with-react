@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useActor } from '@bundly/ic-react';
 import { Actors } from '../canisters';
+import Card from './card/card.component';
+import { CardHeader } from './card/card-header.component';
+import { CardContent } from './card/card-content.component';
+import { CardActions } from './card/card-actions.component';
 
 type Course = {
     title: string;
@@ -27,28 +31,28 @@ export default function CourseList() {
     }
 
     return (
-        <div className="h-full w-full flex flex-col items-center justify-start">
-            <h2 className="text-2xl font-bold text-white mb-4 mt-8">Course List</h2>
-
-            <div className="max-w-md w-full p-8 bg-white shadow-md rounded">
-                <div className="bg-white p-4 rounded">
-                    <ul>
-                        {courses && courses.map((course) => (
-                            <li key={course.title} className="mb-4">
-                                <h3 className="text-lg font-bold text-black">{course.title}</h3>
-                                <p className="text-gray-700">{course.description}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
+        <Card>
+            <CardHeader>
+                Course List
+            </CardHeader>
+            <CardContent>
+                <ul>
+                    {courses && courses.map((course) => (
+                        <li key={course.title} className="mb-4">
+                            <h3 className="text-lg font-bold text-black">{course.title}</h3>
+                            <p className="text-gray-700">{course.description}</p>
+                        </li>
+                    ))}
+                </ul>
+            </CardContent>
+            <CardActions>
                 <button
                     className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
                     onClick={getCourses}
                 >
                     Refresh
                 </button>
-            </div>
-        </div>
+            </CardActions>
+        </Card>
     );
 }

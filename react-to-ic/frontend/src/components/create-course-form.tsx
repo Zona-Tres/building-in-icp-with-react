@@ -1,6 +1,10 @@
 import { Actors } from '@app/canisters';
 import { useActor } from '@bundly/ic-react';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import Card from './card/card.component';
+import { CardHeader } from './card/card-header.component';
+import { CardContent } from './card/card-content.component';
+import { CardActions } from './card/card-actions.component';
 
 const CreateCourseForm: React.FC = () => {
     const coursesActor = useActor<Actors>('courses') as Actors["courses"];
@@ -50,40 +54,42 @@ const CreateCourseForm: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold mb-4">Create Course</h2>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 p-8 bg-white shadow-md rounded">
+        <Card>
+            <CardHeader>
+                Create Course
+            </CardHeader>
+            <CardContent>
+                <form id="create-course-form" onSubmit={handleSubmit}>
+                    <label className="block text-gray-700 text-sm font-bold mb-2">Title:</label>
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={handleTitleChange}
+                        className="border p-2 mb-4 w-full text-black"
+                    />
 
-                <label className="block text-gray-700 text-sm font-bold mb-2">Title:</label>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={handleTitleChange}
-                    className="border p-2 mb-4 w-full text-black"
-                />
+                    <label className="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+                    <textarea
+                        value={description}
+                        onChange={handleDescriptionChange}
+                        className="border p-2 h-20 mb-4 w-full text-black"
+                    />
 
-                <label className="block text-gray-700 text-sm font-bold mb-2">Description:</label>
-                <textarea
-                    value={description}
-                    onChange={handleDescriptionChange}
-                    className="border p-2 h-20 mb-4 w-full text-black"
-                />
-
-                {error && <p className="text-red-500 mb-4">{error}</p>}
-                {success && <p className="text-green-500 mb-4">{success}</p>}
-
-                {loading ? (
-                    <p className="text-gray-500">Sending data...</p>
-                ) : (
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
-                    >
-                        Create Course
-                    </button>
-                )}
-            </form>
-        </div>
+                    {error && <p className="text-red-500 mb-4">{error}</p>}
+                    {success && <p className="text-green-500 mb-4">{success}</p>}
+                </form>
+            </CardContent>
+            <CardActions>
+                <button
+                    form="create-course-form"
+                    disabled={loading}
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                >
+                    Create Course
+                </button>
+            </CardActions>
+        </Card>
     );
 };
 

@@ -1,6 +1,10 @@
 import { Actors } from '@app/canisters';
 import { useActor } from '@bundly/ic-react';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import Card from './card/card.component';
+import { CardHeader } from './card/card-header.component';
+import { CardContent } from './card/card-content.component';
+import { CardActions } from './card/card-actions.component';
 
 const CreateUserForm: React.FC = () => {
     const usersActor = useActor<Actors>('users') as Actors["users"];
@@ -42,38 +46,41 @@ const CreateUserForm: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold mb-4">Create User</h2>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 p-8 bg-white shadow-md rounded">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Username:</label>
-                <input
-                    type="text"
-                    value={username}
-                    onChange={handleUsernameChange}
-                    className="border p-2 mb-4 w-full text-black"
-                />
+        <Card>
+            <CardHeader>
+                Create User
+            </CardHeader>
+            <CardContent>
+                <form id="create-user-form" onSubmit={handleSubmit}>
+                    <label className="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={handleUsernameChange}
+                        className="border p-2 mb-4 w-full text-black"
+                    />
 
-                <label className="block text-gray-700 text-sm font-bold mb-2">Bio:</label>
-                <textarea
-                    value={bio}
-                    onChange={handleBioChange}
-                    className="border p-2 h-20 mb-4 w-full text-black"
-                />
+                    <label className="block text-gray-700 text-sm font-bold mb-2">Bio:</label>
+                    <textarea
+                        value={bio}
+                        onChange={handleBioChange}
+                        className="border p-2 h-20 mb-4 w-full text-black"
+                    />
 
-                {error && <p className="text-red-500 mb-4">{error}</p>}
-
-                {loading ? (
-                    <p className="text-gray-500">Sending data...</p>
-                ) : (
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
-                    >
-                        Create User
-                    </button>
-                )}
-            </form>
-        </div>
+                    {error && <p className="text-red-500 mb-4">{error}</p>}
+                </form>
+            </CardContent>
+            <CardActions>
+                <button
+                    form="create-user-form"
+                    disabled={loading}
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                >
+                    Create User
+                </button>
+            </CardActions>
+        </Card>
     );
 };
 
