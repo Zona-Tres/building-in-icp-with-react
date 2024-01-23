@@ -4,10 +4,10 @@
     "frontend"
   ],
   "scripts": {
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "clean": "rm -rf .azle && rm -rf .dfx && rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
-    "@dfinity/principal": "^0.21.1",
     "azle": "^0.19.0"
   },
   "devDependencies": {
