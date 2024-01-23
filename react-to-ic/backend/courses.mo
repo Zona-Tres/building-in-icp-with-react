@@ -36,9 +36,9 @@ actor {
         return id;
     };
 
-    public query func getAll() : async [(Text, Course)] {
-        let courseIter : Iter.Iter<(Text, Course)> = courses.entries();
-        let courseArray : [(Text, Course)] = Iter.toArray(courseIter);
-        return courseArray;
+    public query func getAll() : async [Course] {
+        let values = courses.vals();
+
+        return Iter.toArray(values);
     };
 }
