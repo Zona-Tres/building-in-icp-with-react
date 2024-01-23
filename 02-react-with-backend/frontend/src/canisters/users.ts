@@ -10,6 +10,6 @@ export type UsersActor = ActorSubclass<_SERVICE>;
 export const users: Canister = {
     idlFactory,
     configuration: {
-        canisterId: "br5f7-7uaaa-aaaaa-qaaca-cai"
+        canisterId: process.env.NEXT_PUBLIC_USERS_CANISTER_ID!
     }
 }
