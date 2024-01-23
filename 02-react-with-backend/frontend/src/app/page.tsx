@@ -3,13 +3,15 @@
 import { Client, InternetIdentity } from "@bundly/ic-core-js";
 import { IcpConnectContextProvider } from "@bundly/ic-react";
 
-import { canisters } from "../canisters";
 import UserList from "@app/components/user-list";
 import CreateUserForm from "@app/components/create-user-form";
 import CreateCourseForm from "@app/components/create-course-form";
 import CourseList from "@app/components/course-list";
 
+import { canisters } from "../canisters";
+
 export default function Home() {
+  // TODO: Delete once identityProviders are no longer mandatory
   const internetIdentity = new InternetIdentity({
     providerUrl: process.env.NEXT_PUBLIC_INTERNET_IDENTITY_URL,
   });
