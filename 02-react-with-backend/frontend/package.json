@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@bundly/ic-core-js": "^0.3.1",
-    "@bundly/ic-react": "^0.3.0",
+    "@bundly/ic-react": "^0.3.1",
     "@dfinity/agent": "^0.21.1",
     "@dfinity/principal": "^0.21.1",
     "next": "14.1.0",
