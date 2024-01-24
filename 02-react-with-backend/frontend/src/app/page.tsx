@@ -11,19 +11,11 @@ import CourseList from "@app/components/course-list";
 import { canisters } from "../canisters";
 
 export default function Home() {
-  // TODO: Delete once identityProviders are no longer mandatory
-  const internetIdentity = new InternetIdentity({
-    providerUrl: process.env.NEXT_PUBLIC_INTERNET_IDENTITY_URL,
-  });
-
   const client = Client.create({
     agent: {
       host: process.env.NEXT_PUBLIC_IC_HOST!,
     },
-    canisters,
-    identityProviders: {
-      "internet-identity": internetIdentity,
-    },
+    canisters
   });
 
   return (
