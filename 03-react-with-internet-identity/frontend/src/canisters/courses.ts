@@ -10,6 +10,6 @@ export type CoursesActor = ActorSubclass<_SERVICE>;
 export const courses: Canister = {
     idlFactory,
     configuration: {
-        canisterId: "bkyz2-fmaaa-aaaaa-qaaaq-cai"
+        canisterId: process.env.NEXT_PUBLIC_COURSES_CANISTER_ID!
     }
 }
