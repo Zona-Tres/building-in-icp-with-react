@@ -1,4 +1,4 @@
-# Descentralize React APP example
+# Descentralize React APP with ICP Backend Services example
 
 ## How to use
 
@@ -7,6 +7,29 @@ Execute the following commands:
 ```bash
 npm install
 dfx start --background
+dfx canister create --all
+```
+
+After that, you should see and output like this:
+
+```bash
+Creating canister courses...
+courses canister created with canister id: cinef-v4aaa-aaaaa-qaalq-cai
+Creating canister frontend...
+frontend canister created with canister id: dfdal-2uaaa-aaaaa-qaama-cai
+Creating canister internet-identity...
+internet-identity canister created with canister id: dccg7-xmaaa-aaaaa-qaamq-cai
+Creating canister users...
+users canister created with canister id: dlbnd-beaaa-aaaaa-qaana-cai
+```
+
+Duplicate the `frontend/.env-example` file in the same directory and rename it to `.env`.
+
+You need to modify the `.env` file with values derived from the previous output.
+
+Now you have to execute following commands:
+
+```bash
 dfx generate
 dfx deploy
 ```
