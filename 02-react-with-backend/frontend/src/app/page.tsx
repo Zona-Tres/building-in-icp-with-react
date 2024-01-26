@@ -1,6 +1,6 @@
 "use client";
 
-import { Client, InternetIdentity } from "@bundly/ic-core-js";
+import { Client } from "@bundly/ic-core-js";
 import { IcpConnectContextProvider } from "@bundly/ic-react";
 
 import UserList from "@app/components/user-list";
